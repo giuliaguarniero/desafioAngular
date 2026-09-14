@@ -1,0 +1,116 @@
+main{
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-image: url('/img/ranger.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menu-toggle {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    border: 0;
+    border-radius: 8px;
+    background: rgba(0, 102, 179, 0.8);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #ffffff;
+}
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 240px;
+    padding: 88px 24px 24px;
+    box-sizing: border-box;
+    background: #26285c;
+    transform: translateX(-100%);
+    transition: transform 180ms ease;
+}
+
+.menu-lateral.aberto {
+    transform: translateX(0);
+}
+
+.menu-lateral h2 {
+    margin: 0 0 28px;
+    color: #ffffff;
+    font-family: "Ford Antenna", sans-serif;
+}
+
+.menu-lateral nav {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.menu-lateral a {
+    padding: 12px;
+    border-radius: 6px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Ford Antenna", sans-serif;
+}
+
+.menu-lateral a:hover {
+    background: #0066b3;
+}
+
+.logout-button {
+    align-self: flex-start;
+    padding: 6px 8px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #ffffff;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background: #ff0000af;
+}
+
+.janelaPai{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(75vw, 900px);
+    min-height: 55vh;
+    padding: 32px;
+    box-sizing: border-box;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 12px;
+    transform: translate(-50%, -50%);
+}
+
+.sistemaDados {
+    position: relative;
+    top: -12px;
+}
+
+.janelaFilho {
+    margin-top: 4px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(38, 40, 92, 0.45);
+}

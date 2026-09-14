@@ -1,1 +1,18 @@
-<p>menu works!</p>
+<button
+	class="menu-toggle"
+	type="button"
+	aria-label="Abrir ou fechar menu"
+	[attr.aria-expanded]="menuAberto"
+	(click)="alternarMenu()">
+	<span></span>
+	<span></span>
+	<span></span>
+</button>
+
+<aside class="menu-lateral" [class.aberto]="menuAberto" aria-label="Navegação principal">
+	<h2>Menu</h2>
+	<nav>
+		<a routerLink="/home" (click)="menuAberto = false">Home</a>
+		<a routerLink="/dashboard" (click)="menuAberto = false">Dashboard</a>
+	</nav>
+</aside>

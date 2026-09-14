@@ -1,1 +1,26 @@
-<p>home works!</p>
+<main>
+    <button class="menu-toggle" type="button" aria-label="Abrir ou fechar menu" [attr.aria-expanded]="menuAberto"
+        (click)="alternarMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <aside class="menu-lateral" [class.aberto]="menuAberto" aria-label="Navegação principal">
+        <h2>Menu</h2>
+        <nav>
+            <a routerLink="/home" (click)="menuAberto = false">Home</a>
+            <a routerLink="/dashboard" (click)="menuAberto = false">Dashboard</a>
+            <button class="logout-button" type="button" routerLink="/login" (click)="menuAberto = false">logout</button>
+        </nav>
+    </aside>
+    <div class="janelaPai">
+        <div class="sistemaDados">Sistema de dados FORD</div>
+        <div class="janelaFilho">
+    Seja bem vinda(o)!
+        </div>
+    </div>
+    <div class="rangerHome">
+
+    </div>
+</main>
