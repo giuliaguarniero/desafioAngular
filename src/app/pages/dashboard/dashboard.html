@@ -10,7 +10,7 @@
     <nav>
         <a routerLink="/home" (click)="menuAberto = false">Home</a>
         <a routerLink="/dashboard" (click)="menuAberto = false">Dashboard</a>
-        <button class="logout-button" type="button" routerLink="/login" (click)="menuAberto = false">Logout</button>
+        <button class="logout-button" type="button" (click)="logout(); menuAberto = false">Logout</button>
     </nav>
 </aside>
 
@@ -18,11 +18,11 @@
     <h1>Dashboard FORD</h1>
     <div class="cardPai">
         Veiculo
-        <div class="cardFilho"><select class="selectVeiculo" name="cardFilho" id="">
-                <option value="Ranger">Ranger</option>
-                <option value="Mustang">Mustang</option>
-                <option value="Territory">Territory</option>
-                <option value="Bronco Sport">Bronco Sport</option>
+        <div class="cardFilho"><select class="selectVeiculo" name="veiculo" id="veiculo"
+            [value]="veiculoSelecionado?.vehicle" (change)="selecionarVeiculo($any($event.target).value)">
+            @for (veiculo of veiculos; track veiculo.id) {
+            <option [value]="veiculo.vehicle">{{ veiculo.vehicle }}</option>
+            }
             </select></div>
 
 
@@ -30,7 +30,7 @@
 
     <div class="cardPai">
         Total Vendas
-        <div class="cardFilho"> 1500 unid
+        <div class="cardFilho"> {{ veiculoSelecionado?.volumetotal ?? '-' }} unid
         </div>
 
 
@@ -38,7 +38,7 @@
 
     <div class="cardPai">
         Conectados
-        <div class="cardFilho"> 500 unid
+        <div class="cardFilho"> {{ veiculoSelecionado?.connected ?? '-' }} unid
         </div>
 
 
@@ -46,14 +46,14 @@
 
     <div class="cardPai">
         Update Software
-        <div class="cardFilho"> 750 unid
+        <div class="cardFilho"> {{ veiculoSelecionado?.softwareUpdates ?? '-' }} unid
         </div>
 
 
     </div>
 
     <!-- //////////////////////////////////////// -->
-    <img class="cardcarroRang" src="/img/ranger.png" alt="Ranger">
+    <img class="cardcarroRang" [src]="veiculoSelecionado?.img" [alt]="veiculoSelecionado?.vehicle">
     <!-- //////////////////////////////////////// -->
 
 
@@ -79,17 +79,37 @@
         </div>
 
         <div class="rodapeFilho">
-            <input type="text"></div>
+            <input type="text" name="vin" maxlength="20" [(ngModel)]="codigoVin"
+                (keyup.enter)="consultarCodigo(codigoVin)" (blur)="consultarCodigo(codigoVin)">
+            @if (mensagemCodigo) {
+            <p class="mensagem-erro">{{ mensagemCodigo }}</p>
+            }
+        </div>
         <div class="rodapeFilho">
-            50000 km</div>
+            @if (dadosVeiculo) {
+            {{ dadosVeiculo.odometro }} km
+            }
+        </div>
         <div class="rodapeFilho">
-            90%</div>
+            @if (dadosVeiculo) {
+            {{ dadosVeiculo.nivelCombustivel }}%
+            }
+        </div>
         <div class="rodapeFilho">
-            on</div>
+            @if (dadosVeiculo) {
+            {{ dadosVeiculo.status }}
+            }
+        </div>
         <div class="rodapeFilho">
-            -12,2322</div>
+            @if (dadosVeiculo) {
+            {{ dadosVeiculo.lat }}
+            }
+        </div>
         <div class="rodapeFilho">
-            -35,2314</div>
+            @if (dadosVeiculo) {
+            {{ dadosVeiculo.long }}
+            }
+        </div>
     </div>
 
 </main>

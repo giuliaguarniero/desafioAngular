@@ -10,12 +10,15 @@
             
             <h2 class="titulo">Boas-Vindas!</h2>
             
-            <form onsubmit="Post(this);">
-                <input type="text" name="nome" placeholder="Insira seu nome" class="fordform" required>
-                <input type="password" name="senha" placeholder="Insira sua senha" class="fordform" required>
+            <form #loginForm="ngForm" (ngSubmit)="login()">
+                <input type="text" name="nome" [(ngModel)]="usuario.nome"  placeholder="Insira seu nome" class="fordform" required>
+                <input type="password" name="senha" [(ngModel)]="usuario.senha" placeholder="Insira sua senha" class="fordform" required>
                 <div class="checkbox-container">
-                    <input type="checkbox" value="salvarDados" class="checkbox" ();>Logar automaticamente
+                    <input type="checkbox" value="salvarDados" class="checkbox">Logar automaticamente
                 </div>
+                @if (mensagemDeErro) {
+                    <p class="mensagem-erro">{{ mensagemDeErro }}</p>
+                }
                 <button type="submit">Entrar</button>
             </form>
         </div>

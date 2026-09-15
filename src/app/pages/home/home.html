@@ -11,7 +11,7 @@
         <nav>
             <a routerLink="/home" (click)="menuAberto = false">Home</a>
             <a routerLink="/dashboard" (click)="menuAberto = false">Dashboard</a>
-            <button class="logout-button" type="button" routerLink="/login" (click)="menuAberto = false">logout</button>
+            <button class="logout-button" type="button" (click)="logout(); menuAberto = false">logout</button>
         </nav>
     </aside>
     <div class="janelaPai">
